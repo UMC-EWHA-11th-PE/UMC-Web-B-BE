@@ -16,4 +16,8 @@ public class RentalService {
     public void createRental(Map<String, Object> body) {
         rentalRepository.saveRental(body);
     }
+
+    public void returnRental(Long rentalId) {
+        rentalRepository.returnRentalAt(rentalId);
+    }
 }

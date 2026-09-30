@@ -20,4 +20,10 @@ public class RentalRepository{
                 body.get("bookId")
         );
     }
+
+    public void returnRentalAt(Long rentalId) {
+        String sql = "UPDATE rental SET returned_at=NOW() WHERE rental_id = ?";
+
+        jdbcTemplate.update(sql, rentalId);
+    }
 }
