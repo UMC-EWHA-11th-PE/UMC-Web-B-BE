@@ -1,0 +1,45 @@
+package com.umc.study.service;
+
+import com.umc.study.dto.request.CreateBookRequest;
+import com.umc.study.dto.response.BookResponse;
+import com.umc.study.entity.Book;
+import com.umc.study.entity.Category;
+import com.umc.study.repository.BookRepository;
+import com.umc.study.repository.CategoryRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service // 비즈니스 로직을 수행하는 메인 셰프 계층
+@RequiredArgsConstructor
+public class BookService {
+
+    // 창고지기(Repository)를 생성자 주입으로 데려옵니다.
+    private final BookRepository bookRepository;
+    private final CategoryRepository categoryRepository;
+
+    @Transactional
+    public BookResponse createBook(CreateBookRequest request) {
+        if (bookRepository.existsByTitle(request.title())) {
+            throw new IllegalArgumentException("이미 등록된 도서입니다.");
+        }
+
+        Category category = categoryRepository.findById(request.categoryId())
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 카테고리입니다."));
+
+        Book book = new Book(category, request.title(), request.description());
+        return BookResponse.from(bookRepository.save(book));
+    }
+
+    @Transactional(readOnly = true)
+    public List<BookResponse> getBooks(String keyword) {
+        List<Book> books = (keyword == null || keyword.isBlank())
+                ? bookRepository.findAllByOrderByBookIdDesc()
+                : bookRepository.findByTitleContainingOrderByBookIdDesc(keyword);
+
+        return books.stream().map(BookResponse::from).toList();
+    }
+
+}
