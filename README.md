@@ -2,7 +2,7 @@
 
 UMC EWHA 11th PE Web B 백엔드 레포지토리입니다.
 
-## 🙌 Our Crew
+## 🙌 Our Crew 
 
 | 닉네임 | 이름 | GitHub |
 |:---:|:---|:---|
