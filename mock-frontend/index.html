@@ -1,0 +1,77 @@
+<!-- mock-frontend/index.html -->
+<!doctype html>
+<html lang="ko">
+  <body>
+    <h1>간이 프론트 : 팀원 영화 평가 조회</h1>
+
+    <input id="memberId" type="number" placeholder="팀원 id" value="1" />
+    <button onclick="loadRatings()">평가 조회</button>
+
+    <p id="status"></p>
+    <ul id="ratings"></ul>
+
+    <script>
+      // Spring이면 8080, NestJS면 3000으로 바꿔서 테스트하세요.
+      const BASE_URL = "http://localhost:8080";
+
+      // 아는 필드는 한글 라벨로, 나머지는 필드명 그대로 출력
+      const LABELS = {
+        ratingId: "평가 id",
+        movieId: "영화 id",
+        score: "별점",
+        comment: "코멘트",
+      };
+
+      async function loadRatings() {
+        const memberId = document.getElementById("memberId").value.trim();
+        const status = document.getElementById("status");
+        const list = document.getElementById("ratings");
+        list.innerHTML = "";
+
+        if (!memberId) {
+          status.textContent = "id를 입력해 주세요.";
+          return;
+        }
+
+        status.textContent = "불러오는 중...";
+
+        try {
+          const res = await fetch(
+            `${BASE_URL}/members/${encodeURIComponent(memberId)}/ratings`,
+          );
+
+          if (res.status === 404) {
+            status.textContent = `id ${memberId} 팀원은 존재하지 않아요. (404)`;
+            return;
+          }
+          if (!res.ok) {
+            status.textContent = `요청 실패: ${res.status}`;
+            return;
+          }
+
+          const ratings = await res.json();
+
+          if (ratings.length === 0) {
+            status.textContent = `id ${memberId} 팀원의 평가가 아직 없어요.`;
+            return;
+          }
+
+          status.textContent = `id ${memberId} 팀원의 평가 ${ratings.length}건 (최신순)`;
+
+          for (const rating of ratings) {
+            const li = document.createElement("li");
+            for (const [key, value] of Object.entries(rating)) {
+              const line = document.createElement("div");
+              line.textContent = `${LABELS[key] ?? key}: ${value}`;
+              li.appendChild(line);
+            }
+            li.appendChild(document.createElement("br"));
+            list.appendChild(li);
+          }
+        } catch (error) {
+          status.textContent = `에러: ${error.message}`;
+        }
+      }
+    </script>
+  </body>
+</html>
