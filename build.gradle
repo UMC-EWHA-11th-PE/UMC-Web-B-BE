@@ -18,23 +18,27 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	// 4주차 JPA
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	// 4주차 DTO 검증
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// API를 만들기 위한 Spring Web
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Java 객체와 MySQL 테이블을 연결하는 JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// 입력값 검증
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// 반복적인 Java 코드 자동 생성
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 
+	// MySQL 연결
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// 테스트
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testCompileOnly 'org.projectlombok:lombok'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	testAnnotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
-layout.buildDirectory = layout.projectDirectory.dir('build-temp')

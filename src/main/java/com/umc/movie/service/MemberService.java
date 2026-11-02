@@ -1,0 +1,37 @@
+package com.umc.movie.service;
+
+import com.umc.movie.dto.AvailabilityResponse;
+import com.umc.movie.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service // 이 클래스가 비즈니스 로직을 담당하는 Service임을 표시
+@RequiredArgsConstructor // final 필드를 초기화하는 생성자 자동 생성
+public class MemberService {
+
+    // 회원 데이터를 조회하기 위해 Repository 사용
+    private final MemberRepository memberRepository;
+
+    // 닉네임 사용 가능 여부 확인
+    @Transactional(readOnly = true)
+    public AvailabilityResponse checkNickname(String nickname) {
+
+        // 해당 닉네임이 이미 존재하는지 확인
+        boolean exists = memberRepository.existsByNickname(nickname);
+
+        // 존재하면 false, 존재하지 않으면 true 반환
+        return new AvailabilityResponse(!exists);
+    }
+
+    // 이메일 사용 가능 여부 확인
+    @Transactional(readOnly = true)
+    public AvailabilityResponse checkEmail(String email) {
+
+        // 해당 이메일이 이미 존재하는지 확인
+        boolean exists = memberRepository.existsByEmail(email);
+
+        // 존재하면 false, 존재하지 않으면 true 반환
+        return new AvailabilityResponse(!exists);
+    }
+}
