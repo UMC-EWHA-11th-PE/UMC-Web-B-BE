@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ac2afecb-3026-418d-ba08-c78c157d395d" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/movie/movie/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/RatingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/RatingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/entity/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/entity/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/entity/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/entity/Rating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/repository/RatingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/repository/RatingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/service/RatingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/service/RatingService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/movie/movie">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/movie/movie/build.gradle">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/movie/movie/movie">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/movie/movie">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="movie" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3LZjFj5fwJrn8kWc3ZRNQtWIcPZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.C:/Users/admin/Desktop/은비 BE/movie/movie/build.gradle.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.movie [:com.umc.movie.MovieApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.movie [dependencies].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.movie 빌드.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.MovieApplication.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;은비/week5&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/admin/Desktop/은비 BE&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Spring Boot.MovieApplication">
+    <configuration name="MovieApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.umc.movie.MovieApplication" />
+      <module name="movie.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.umc.movie.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="C:/Users/admin/Desktop/은비 BE/movie/movie/build.gradle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/movie/movie" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootRun" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="movie [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/movie/movie" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="MovieApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="DB_PASSWORD" value="eunbi0704" />
+      </envs>
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
+      <module name="movie.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.umc.movie.MovieApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.umc.movie.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.C:/Users/admin/Desktop/은비 BE/movie/movie/build.gradle" />
+      <item itemvalue="Gradle.movie [dependencies]" />
+      <item itemvalue="Spring Boot.MovieApplication" />
+      <item itemvalue="애플리케이션.MovieApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.MovieApplication" />
+        <item itemvalue="Gradle.movie [dependencies]" />
+        <item itemvalue="애플리케이션.MovieApplication" />
+        <item itemvalue="Gradle.C:/Users/admin/Desktop/은비 BE/movie/movie/build.gradle" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="ac2afecb-3026-418d-ba08-c78c157d395d" name="변경" comment="" />
+      <created>1793668383956</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1793668383956</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/movie/movie/build.gradle</url>
+          <line>18</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
