@@ -18,6 +18,9 @@ repositories {
 }
 
 dependencies {
+	//비밀번호를 bcrypt로 해시하기 위한 라이브러리
+	implementation 'org.springframework.security:spring-security-crypto'
+
 	// API를 만들기 위한 Spring Web
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 

@@ -3,6 +3,7 @@ package com.umc.movie.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 
@@ -33,4 +34,13 @@ public class Member {
     @Column(name = "updated_at", nullable = false,
             insertable = false, updatable = false)
     private LocalDateTime updatedAt;
+
+    // 회원가입 시 Member 객체를 생성하기 위한 Builder 생성자
+    @Builder
+    public Member(String email, String password, String nickname) {
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+    }
+
 }
