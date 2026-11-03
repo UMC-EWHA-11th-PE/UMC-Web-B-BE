@@ -1,6 +1,7 @@
 package com.umc.movie.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -28,7 +29,7 @@ public class Rating {
 
     // 영화 평점 (1~5점)
     @Column(nullable = false)
-    private Byte score;
+    private Integer score;
 
     // 영화에 대한 한줄평
     @Column(columnDefinition = "TEXT")
@@ -43,4 +44,19 @@ public class Rating {
     @Column(name = "updated_at", nullable = false,
             insertable = false, updatable = false)
     private LocalDateTime updatedAt;
+
+    // 새로운 평점 객체를 생성하기 위한 Builder 생성자
+    @Builder
+    public Rating(Member member, Long movieId, Integer score, String comment) {
+        this.member = member;
+        this.movieId = movieId;
+        this.score = score;
+        this.comment = comment;
+    }
+
+    // 기존 평점과 후기를 수정하는 메서드
+    public void update(Integer score, String comment) {
+        this.score = score;
+        this.comment = comment;
+    }
 }

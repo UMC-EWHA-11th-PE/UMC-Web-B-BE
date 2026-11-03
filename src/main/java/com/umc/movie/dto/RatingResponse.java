@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public record RatingResponse(
         Long ratingId,
         Long movieId,
-        Byte score,
+        Integer score,
         String comment,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
