@@ -1,3 +1,4 @@
+
 package com.umc.movie.controller;
 
 import com.umc.movie.dto.ApiResponse;
@@ -15,7 +16,6 @@ import java.util.List;
 
 @RestController // HTTP 요청을 받아 JSON으로 응답
 @RequiredArgsConstructor // RatingService 의존성 주입
-@RequestMapping("/members") // 공통 URL 설정
 public class RatingController {
 
     private final RatingService ratingService;
@@ -24,23 +24,23 @@ public class RatingController {
 
     // GET /members/{memberId}/ratings
     // 특정 회원이 작성한 영화 평점 목록 조회
-    @GetMapping("/{memberId}/ratings")
+    @GetMapping("/members/{memberId}/ratings")
     public List<RatingResponse> getMemberRatings(@PathVariable Long memberId) {
 
-        // Service를 호출하여 해당 회원의 평점 목록 반환
+        // 기존 5주차 평점 조회 기능 유지
         return ratingService.getRatingsByMember(memberId);
     }
 
-    // ==================== 6주차: 평점 등록 ====================
+    // ==================== 7주차: JWT 기반 평점 등록 ====================
 
-    // POST /members/{memberId}/ratings
-    // 특정 회원의 새로운 영화 평점 등록
-    @PostMapping("/{memberId}/ratings")
+    // POST /ratings
+    // 로그인한 회원의 새로운 영화 평점 등록
+    @PostMapping("/ratings")
     public ResponseEntity<ApiResponse<Long>> createRating(
-            @PathVariable Long memberId,
+            @RequestAttribute("memberId") Long memberId,
             @Valid @RequestBody CreateRatingRequest request) {
 
-        // Service를 호출하여 평점을 저장하고 생성된 평점 ID 반환
+        // JWT에서 추출한 회원 ID로 평점 등록
         Long ratingId = ratingService.create(memberId, request);
 
         // 등록 성공 시 201 Created 반환
@@ -49,17 +49,17 @@ public class RatingController {
                 .body(ApiResponse.created("평점 등록에 성공했습니다.", ratingId));
     }
 
-    // ==================== 6주차: 평점 수정 ====================
+    // ==================== 7주차: JWT 기반 평점 수정 ====================
 
-    // PATCH /members/{memberId}/ratings/{ratingId}
-    // 본인이 작성한 영화 평점 수정
-    @PatchMapping("/{memberId}/ratings/{ratingId}")
+    // PATCH /ratings/{ratingId}
+    // 로그인한 회원이 본인의 평점 수정
+    @PatchMapping("/ratings/{ratingId}")
     public ResponseEntity<ApiResponse<Void>> updateRating(
-            @PathVariable Long memberId,
+            @RequestAttribute("memberId") Long memberId,
             @PathVariable Long ratingId,
             @Valid @RequestBody UpdateRatingRequest request) {
 
-        // Service를 호출하여 평점 수정
+        // JWT 회원 ID를 기준으로 작성자 권한 확인 후 수정
         ratingService.update(ratingId, memberId, request);
 
         // 수정 성공 시 200 OK 반환
@@ -67,19 +67,19 @@ public class RatingController {
                 .ok(ApiResponse.<Void>ok("평점 수정에 성공했습니다.", null));
     }
 
-    // ==================== 6주차: 평점 삭제 ====================
+    // ==================== 7주차: JWT 기반 평점 삭제 ====================
 
-    // DELETE /members/{memberId}/ratings/{ratingId}
-    // 본인이 작성한 영화 평점 삭제
-    @DeleteMapping("/{memberId}/ratings/{ratingId}")
+    // DELETE /ratings/{ratingId}
+    // 로그인한 회원이 본인의 평점 삭제
+    @DeleteMapping("/ratings/{ratingId}")
     public ResponseEntity<Void> deleteRating(
-            @PathVariable Long memberId,
+            @RequestAttribute("memberId") Long memberId,
             @PathVariable Long ratingId) {
 
-        // Service를 호출하여 평점 삭제
+        // JWT 회원 ID를 기준으로 작성자 권한 확인 후 삭제
         ratingService.delete(ratingId, memberId);
 
-        // 삭제 성공 시 204 No Content 반환 (응답 본문 없음)
+        // 기존 6주차와 동일하게 204 No Content 반환
         return ResponseEntity.noContent().build();
     }
 }

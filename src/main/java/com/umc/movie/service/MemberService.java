@@ -1,11 +1,16 @@
+
 package com.umc.movie.service;
 
 import com.umc.movie.dto.AvailabilityResponse;
 import com.umc.movie.dto.MemberResponse;
 import com.umc.movie.dto.SignUpRequest;
+import com.umc.movie.dto.MemberInfoResponse;
+import com.umc.movie.dto.MemberUpdateRequest;
 import com.umc.movie.entity.Member;
+import com.umc.movie.exception.ApiException;
 import com.umc.movie.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -72,5 +77,50 @@ public class MemberService {
                 savedMember.getEmail(),
                 savedMember.getNickname()
         );
+    }
+
+    // 내 정보 조회 (7주차)
+    @Transactional(readOnly = true)
+    public MemberInfoResponse getMyInfo(Long memberId) {
+
+        // 1. JWT에서 추출한 회원 ID로 DB 조회
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new ApiException(
+                        HttpStatus.NOT_FOUND,
+                        "MEMBER404_1",
+                        "존재하지 않는 회원입니다."
+                ));
+
+        // 2. 비밀번호를 제외한 회원 정보만 반환
+        return MemberInfoResponse.from(member);
+    }
+
+    // 내 정보 수정 (7주차)
+    @Transactional
+    public MemberInfoResponse updateMyInfo(Long memberId, MemberUpdateRequest request) {
+
+        // 1. JWT에서 추출한 회원 ID로 DB 조회
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new ApiException(
+                        HttpStatus.NOT_FOUND,
+                        "MEMBER404_1",
+                        "존재하지 않는 회원입니다."
+                ));
+
+        // 2. 다른 회원이 해당 닉네임을 사용 중인지 확인
+        if (memberRepository.existsByNicknameAndMemberIdNot(
+                request.nickname(), memberId)) {
+            throw new ApiException(
+                    HttpStatus.CONFLICT,
+                    "MEMBER409_1",
+                    "이미 사용 중인 닉네임입니다."
+            );
+        }
+
+        // 3. 닉네임 변경
+        member.updateNickname(request.nickname());
+
+        // 4. 변경된 회원 정보 반환
+        return MemberInfoResponse.from(member);
     }
 }
