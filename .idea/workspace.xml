@@ -5,14 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac2afecb-3026-418d-ba08-c78c157d395d" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/LoginResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/MemberInfoResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/MemberUpdateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/exception/ApiException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/interceptor/AuthInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/util/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie/movie/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/GlobalExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/MemberController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/RatingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/RatingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/entity/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/entity/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/entity/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/entity/Rating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/repository/RatingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/repository/RatingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/repository/MemberRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/service/MemberService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/service/RatingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/service/RatingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,9 +96,11 @@
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;Spring Boot.MovieApplication.executor&quot;: &quot;Run&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;은비/week5&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;은비/week6&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/admin/Desktop/은비 BE&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
 }</component>
@@ -157,6 +171,8 @@
     <configuration name="MovieApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="DB_PASSWORD" value="eunbi0704" />
+        <env name="JWT_SECRET" value="umc-11th-movie-rating-secret-key-eunbi-0704-enb" />
+        <env name="JWT_ACCESS_EXPIRATION" value="3600" />
       </envs>
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
       <module name="movie.main" />
