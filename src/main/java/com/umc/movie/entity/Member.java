@@ -43,4 +43,9 @@ public class Member {
         this.nickname = nickname;
     }
 
+    // 회원 닉네임 변경
+    public void updateNickname(String nickname){
+        this.nickname = nickname;
+    }
+
 }
