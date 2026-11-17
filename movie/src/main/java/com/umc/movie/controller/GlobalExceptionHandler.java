@@ -2,6 +2,10 @@
 package com.umc.movie.controller;
 
 import com.umc.movie.dto.ApiResponse;
+<<<<<<< HEAD
+import com.umc.movie.exception.ApiException;
+=======
+>>>>>>> origin/미로/main
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -33,4 +37,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status)
                 .body(ApiResponse.failure("COMMON" + status, exception.getReason()));
     }
+<<<<<<< HEAD
+
+    @ExceptionHandler(ApiException.class)
+    public ResponseEntity<ApiResponse<Void>> handleApiException(ApiException exception) {
+        return ResponseEntity.status(exception.getStatus())
+                .body(ApiResponse.failure(exception.getCode(), exception.getMessage()));
+    }
+=======
+>>>>>>> origin/미로/main
 }
