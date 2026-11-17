@@ -33,8 +33,11 @@ public class Member extends BaseTimeEntity {
         this.password = password;
         this.nickname = nickname;
     }
+<<<<<<< HEAD
 
     public void updateNickname(String nickname) {
         this.nickname = nickname;
     }
+=======
+>>>>>>> origin/미로/main
 }

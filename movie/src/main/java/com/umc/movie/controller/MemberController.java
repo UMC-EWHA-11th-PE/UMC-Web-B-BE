@@ -1,6 +1,7 @@
 // src/main/java/com/umc/movie/controller/MemberController.java
 package com.umc.movie.controller;
 
+<<<<<<< HEAD
 import com.umc.movie.dto.*;
 import com.umc.movie.interceptor.AuthInterceptor;
 import com.umc.movie.service.MemberService;
@@ -10,6 +11,23 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PatchMapping;
+=======
+import com.umc.movie.dto.ApiResponse;
+import com.umc.movie.dto.EmailCheckResponse;
+import com.umc.movie.dto.MemberResponse;
+import com.umc.movie.dto.NicknameCheckResponse;
+import com.umc.movie.dto.SignUpRequest;
+import com.umc.movie.service.MemberService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+>>>>>>> origin/미로/main
 
 @RestController
 @RequiredArgsConstructor
@@ -35,6 +53,7 @@ public class MemberController {
         return ResponseEntity.status(201)
                 .body(ApiResponse.created("회원가입에 성공했습니다.", response));
     }
+<<<<<<< HEAD
 
     @GetMapping("/me")
     public ResponseEntity<ApiResponse<MemberInfoResponse>> getMyInfo(
@@ -56,4 +75,6 @@ public class MemberController {
                 ApiResponse.ok("회원 정보를 수정했습니다.", response)
         );
     }
+=======
+>>>>>>> origin/미로/main
 }

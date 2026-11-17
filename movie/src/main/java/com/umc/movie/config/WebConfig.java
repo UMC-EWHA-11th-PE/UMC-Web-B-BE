@@ -4,11 +4,7 @@ package com.umc.movie.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import com.umc.movie.interceptor.AuthInterceptor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
-@RequiredArgsConstructor
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
@@ -19,20 +15,4 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedMethods("GET", "POST", "PATCH", "DELETE")
                 .allowedHeaders("*");
     }
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authInterceptor)
-                .addPathPatterns("/**")
-                .excludePathPatterns(
-                        "/auth/**",
-                        "/members",
-                        "/members/nickname/**",
-                        "/members/email/**",
-                        "/members/*/ratings",
-                        "/error"
-                );
-    }
-
-    private final AuthInterceptor authInterceptor;
 }

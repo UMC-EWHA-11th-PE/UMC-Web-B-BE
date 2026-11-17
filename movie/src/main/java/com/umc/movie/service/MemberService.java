@@ -1,6 +1,7 @@
 
 package com.umc.movie.service;
 
+<<<<<<< HEAD
 import com.umc.movie.dto.*;
 import com.umc.movie.entity.Member;
 import com.umc.movie.exception.ApiException;
@@ -8,6 +9,15 @@ import com.umc.movie.repository.MemberRepository;
 import com.umc.movie.dto.MemberUpdateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+=======
+import com.umc.movie.dto.EmailCheckResponse;
+import com.umc.movie.dto.MemberResponse;
+import com.umc.movie.dto.NicknameCheckResponse;
+import com.umc.movie.dto.SignUpRequest;
+import com.umc.movie.entity.Member;
+import com.umc.movie.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
+>>>>>>> origin/미로/main
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,6 +74,7 @@ public class MemberService {
                 savedMember.getNickname()
         );
     }
+<<<<<<< HEAD
 
     public MemberInfoResponse getMyInfo(Long memberId) {
         Member member = memberRepository.findById(memberId)
@@ -93,4 +104,6 @@ public class MemberService {
 
         return MemberInfoResponse.from(member);
     }
+=======
+>>>>>>> origin/미로/main
 }
