@@ -1,11 +1,18 @@
 package com.umc.movie.controller;
 
+import com.umc.movie.config.SwaggerConfig;
 import com.umc.movie.dto.ApiResponse;
 import com.umc.movie.dto.CreateRatingRequest;
 import com.umc.movie.dto.RatingResponse;
 import com.umc.movie.dto.UpdateRatingRequest;
 import com.umc.movie.interceptor.AuthInterceptor;
 import com.umc.movie.service.RatingService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,15 +22,25 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "평점", description = "영화 평점 API")
 public class RatingController {
 
     private final RatingService ratingService;
 
+    @Operation(
+            summary = "유저별 평점 조회",
+            description = "특정 회원이 남긴 평점 목록을 최신순으로 조회합니다. 토큰 없이 호출할 수 있는 공개 API입니다."
+    )
     @GetMapping("/members/{memberId}/ratings")
     public List<RatingResponse> getMemberRatings(@PathVariable Long memberId) {
         return ratingService.getRatingsByMember(memberId);
     }
 
+    @Operation(
+            summary = "영화 평점 생성",
+            description = "영화 평점을 생성합니다."
+    )
+    @SecurityRequirement(name = SwaggerConfig.BEARER_AUTH)
     @PostMapping("/ratings")
     public ResponseEntity<ApiResponse<RatingResponse>> create(
             @RequestAttribute(AuthInterceptor.MEMBER_ID) Long memberId,
@@ -34,6 +51,20 @@ public class RatingController {
                 .body(ApiResponse.created("평점을 등록했습니다.", response));
     }
 
+    @Operation(summary = "영화 평점 수정", description = "본인이 작성한 영화 평점을 수정합니다.")
+    @SecurityRequirement(name = SwaggerConfig.BEARER_AUTH)
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    responseCode = "403", description = "다른 회원의 평점",
+                    content = @Content(mediaType = "application/json", examples = @ExampleObject(value = """
+                        {
+                          "isSuccess": false,
+                          "code": "RATING403_1",
+                          "message": "본인이 작성한 평점만 수정할 수 있습니다.",
+                          "result": null
+                        }
+                        """)))
+    })
     @PatchMapping("/ratings/{ratingId}")
     public ResponseEntity<ApiResponse<RatingResponse>> update(
             @RequestAttribute(AuthInterceptor.MEMBER_ID) Long memberId,
@@ -44,6 +75,11 @@ public class RatingController {
         return ResponseEntity.ok(ApiResponse.ok("평점을 수정했습니다.", response));
     }
 
+    @Operation(
+            summary = "영화 평점 삭제",
+            description = "영화 평점을 삭제합니다."
+    )
+    @SecurityRequirement(name = SwaggerConfig.BEARER_AUTH)
     @DeleteMapping("/ratings/{ratingId}")
     public ResponseEntity<ApiResponse<Void>> delete(
             @RequestAttribute(AuthInterceptor.MEMBER_ID) Long memberId,
