@@ -5,18 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac2afecb-3026-418d-ba08-c78c157d395d" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/FavoriteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/MovieRecordController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/CreateFavoriteRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/CreateMovieRecordRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/FavoriteResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/FavoriteStatusResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/MovieRecordResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/entity/Favorite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/repository/FavoriteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/service/FavoriteService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/service/MovieRecordService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/config/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/test/java/com/umc/movie/controller/FavoriteApiTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/test/java/com/umc/movie/controller/RatingServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/test/java/com/umc/movie/service/FavoriteServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/FavoriteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/FavoriteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/RatingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/controller/RatingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/CreateFavoriteRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/CreateFavoriteRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/SignUpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/dto/SignUpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +59,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="AnnotationType" />
         <option value="Class" />
       </list>
     </option>
@@ -78,17 +81,26 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
     "Gradle.C:/Users/admin/Desktop/은비 BE/movie/movie/build.gradle.executor": "Debug",
+    "Gradle.FavoriteApiTest.createFavoriteWithoutToken.executor": "Run",
+    "Gradle.FavoriteServiceTest.createFavorite.executor": "Run",
+    "Gradle.FavoriteServiceTest.executor": "Run",
+    "Gradle.RatingApiTest.executor": "Run",
+    "Gradle.RatingServiceTest.updateRatingWhenNotOwner.executor": "Run",
     "Gradle.movie [:com.umc.movie.MovieApplication.main()].executor": "Run",
     "Gradle.movie [dependencies].executor": "Run",
     "Gradle.movie 빌드.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "Spring Boot.MovieApplication.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "은비/week7",
+    "git-widget-placeholder": "은비/week8",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/admin/Desktop/은비 BE",
     "node.js.detected.package.jshint": "true",
@@ -96,21 +108,13 @@
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
-  <component name="RunManager" selected="Spring Boot.MovieApplication">
-    <configuration name="MovieApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.umc.movie.MovieApplication" />
-      <module name="movie.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.umc.movie.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="C:/Users/admin/Desktop/은비 BE/movie/movie/build.gradle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.umc.movie.service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.RatingApiTest">
+    <configuration name="FavoriteApiTest.createFavoriteWithoutToken" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/movie/movie" />
@@ -121,41 +125,99 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="bootRun" />
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.umc.movie.controller.FavoriteApiTest.createFavoriteWithoutToken&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
       <GradleProfilingDisabled>false</GradleProfilingDisabled>
       <GradleCoverageDisabled>false</GradleCoverageDisabled>
       <method v="2" />
     </configuration>
-    <configuration name="movie [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="FavoriteServiceTest.createFavorite" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/movie/movie" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="dependencies" />
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.umc.movie.service.FavoriteServiceTest.createFavorite&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="RatingApiTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/movie/movie" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.umc.movie.controller.RatingApiTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="RatingServiceTest.updateRatingWhenNotOwner" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/movie/movie" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.umc.movie.service.RatingServiceTest.updateRatingWhenNotOwner&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
       <GradleProfilingDisabled>false</GradleProfilingDisabled>
       <GradleCoverageDisabled>false</GradleCoverageDisabled>
       <method v="2" />
@@ -180,17 +242,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.C:/Users/admin/Desktop/은비 BE/movie/movie/build.gradle" />
-      <item itemvalue="Gradle.movie [dependencies]" />
+      <item itemvalue="Gradle.FavoriteApiTest.createFavoriteWithoutToken" />
+      <item itemvalue="Gradle.FavoriteServiceTest.createFavorite" />
+      <item itemvalue="Gradle.RatingApiTest" />
+      <item itemvalue="Gradle.RatingServiceTest.updateRatingWhenNotOwner" />
       <item itemvalue="Spring Boot.MovieApplication" />
-      <item itemvalue="애플리케이션.MovieApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.RatingApiTest" />
+        <item itemvalue="Gradle.RatingServiceTest.updateRatingWhenNotOwner" />
         <item itemvalue="Spring Boot.MovieApplication" />
-        <item itemvalue="Gradle.movie [dependencies]" />
-        <item itemvalue="애플리케이션.MovieApplication" />
-        <item itemvalue="Gradle.C:/Users/admin/Desktop/은비 BE/movie/movie/build.gradle" />
+        <item itemvalue="Gradle.FavoriteServiceTest.createFavorite" />
+        <item itemvalue="Gradle.FavoriteApiTest.createFavoriteWithoutToken" />
       </list>
     </recent_temporary>
   </component>
@@ -219,9 +283,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/movie/movie/build.gradle</url>
-          <line>18</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/service/FavoriteService.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/movie/movie/src/main/java/com/umc/movie/service/FavoriteService.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
