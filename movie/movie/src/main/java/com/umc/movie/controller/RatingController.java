@@ -1,12 +1,16 @@
 // src/main/java/com/umc/movie/controller/RatingController.java
 package com.umc.movie.controller;
 
+import com.umc.movie.config.SwaggerConfig;
 import com.umc.movie.dto.ApiResponse;
 import com.umc.movie.dto.CreateRatingRequest;
 import com.umc.movie.dto.RatingResponse;
 import com.umc.movie.dto.UpdateRatingRequest;
 import com.umc.movie.interceptor.AuthInterceptor;
 import com.umc.movie.service.RatingService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,16 +20,25 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/members")
+@Tag(name = "평점", description = "영화 평점 등록, 수정, 삭제와 회원별 조회")
 public class RatingController {
     private final RatingService ratingService;
 
-    @GetMapping("/{memberId}/ratings")
+    @Operation(summary = "유저별 평점 조회", description = "지정한 회원의 평점 목록을 최신순으로 조회합니다. 토큰이 필요하지 않습니다.")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "회원 평점 조회 성공")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "회원 없음 MEMBER404_1")
+    @GetMapping("/members/{memberId}/ratings")
     public List<RatingResponse> getMemberRatings(@PathVariable Long memberId) {
         return ratingService.getRatingsByMember(memberId);
     }
 
-    @PostMapping("/ratings")
+    @SecurityRequirement(name = SwaggerConfig.BEARER_AUTH)
+    @Operation(summary = "평점 등록", description = "영화에 점수와 후기를 등록합니다. Bearer 토큰이 필요합니다.")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "평점 등록 성공")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "토큰 누락 AUTH401_2 / 유효하지 않은 토큰 AUTH401_3 / 토큰 만료 AUTH401_4")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "회원 없음 MEMBER404_1")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "중복 평점 RATING409_1")
+    @PostMapping({"/ratings", "/members/ratings"})
     public ResponseEntity<ApiResponse<RatingResponse>> create(
             @RequestAttribute(AuthInterceptor.MEMBER_ID) Long memberId,
             @RequestBody @Valid CreateRatingRequest request
@@ -35,7 +48,13 @@ public class RatingController {
                 .body(ApiResponse.created("평점을 등록했습니다.", response));
     }
 
-    @PatchMapping("/ratings/{ratingId}")
+    @SecurityRequirement(name = SwaggerConfig.BEARER_AUTH)
+    @Operation(summary = "평점 수정", description = "본인이 작성한 평점을 수정합니다. Bearer 토큰이 필요합니다.")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "성공")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "토큰 누락 AUTH401_2 / 유효하지 않은 토큰 AUTH401_3 / 토큰 만료 AUTH401_4")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "403", description = "다른 회원의 평점 RATING403_1")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "평점 없음 RATING404_1")
+    @PatchMapping({"/ratings/{ratingId}", "/members/ratings/{ratingId}"})
     public ResponseEntity<ApiResponse<RatingResponse>> update(
             @RequestAttribute(AuthInterceptor.MEMBER_ID) Long memberId,
             @PathVariable Long ratingId,
@@ -45,7 +64,13 @@ public class RatingController {
         return ResponseEntity.ok(ApiResponse.ok("평점을 수정했습니다.", response));
     }
 
-    @DeleteMapping("/ratings/{ratingId}")
+    @SecurityRequirement(name = SwaggerConfig.BEARER_AUTH)
+    @Operation(summary = "평점 삭제", description = "본인이 작성한 평점을 삭제합니다. Bearer 토큰이 필요합니다.")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "성공")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "토큰 누락 AUTH401_2 / 유효하지 않은 토큰 AUTH401_3 / 토큰 만료 AUTH401_4")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "403", description = "다른 회원의 평점 RATING403_1")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "평점 없음 RATING404_1")
+    @DeleteMapping({"/ratings/{ratingId}", "/members/ratings/{ratingId}"})
     public ResponseEntity<ApiResponse<Void>> delete(
             @RequestAttribute(AuthInterceptor.MEMBER_ID) Long memberId,
             @PathVariable Long ratingId
