@@ -7,6 +7,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
+import com.umc.movie.exception.ApiException;
 
 // 모든 Controller에서 발생하는 예외를 공통으로 처리
 @RestControllerAdvice
@@ -52,5 +53,17 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.status(status)
                 .body(ApiResponse.failure("COMMON" + status, exception.getReason()));
+    }
+
+    // 5. 직접 정의한 ApiException 처리 → 지정된 HTTP 상태 코드 반환
+    @ExceptionHandler(ApiException.class)
+    public ResponseEntity<ApiResponse<Void>> handleApiException(
+            ApiException exception
+    ) {
+        return ResponseEntity.status(exception.getStatus())
+                .body(ApiResponse.failure(
+                        exception.getCode(),
+                        exception.getMessage()
+                ));
     }
 }
