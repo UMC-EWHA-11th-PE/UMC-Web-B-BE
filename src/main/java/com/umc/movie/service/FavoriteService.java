@@ -2,15 +2,16 @@ package com.umc.movie.service;
 
 import com.umc.movie.dto.CreateFavoriteRequest;
 import com.umc.movie.dto.FavoriteResponse;
+import com.umc.movie.dto.FavoriteStatusResponse;
 import com.umc.movie.entity.Favorite;
 import com.umc.movie.entity.Member;
+import com.umc.movie.exception.ApiException;
 import com.umc.movie.repository.FavoriteRepository;
 import com.umc.movie.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -37,21 +38,24 @@ public class FavoriteService {
     // ==================== 즐겨찾기 여부 조회 ====================
 
     // 로그인한 회원이 해당 영화를 즐겨찾기에 등록했는지 확인
-    public boolean isFavorite(Long memberId, Long movieId) {
+    public FavoriteStatusResponse isFavorite(Long memberId, Long movieId) {
 
-        return favoriteRepository
+        boolean isFavorite = favoriteRepository
                 .existsByMember_MemberIdAndMovieId(memberId, movieId);
+
+        return new FavoriteStatusResponse(isFavorite);
     }
 
     // ==================== 즐겨찾기 등록 ====================
 
     @Transactional
-    public void create(Long memberId, CreateFavoriteRequest request) {
+    public FavoriteResponse create(Long memberId, CreateFavoriteRequest request) {
 
         // JWT에서 추출한 회원 ID로 회원 조회
         Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new ResponseStatusException(
+                .orElseThrow(() -> new ApiException(
                         HttpStatus.NOT_FOUND,
+                        "MEMBER404_1",
                         "존재하지 않는 회원입니다."
                 ));
 
@@ -59,8 +63,9 @@ public class FavoriteService {
         if (favoriteRepository.existsByMember_MemberIdAndMovieId(
                 memberId, request.movieId())) {
 
-            throw new ResponseStatusException(
+            throw new ApiException(
                     HttpStatus.CONFLICT,
+                    "FAVORITE409_1",
                     "이미 즐겨찾기에 등록된 영화입니다."
             );
         }
@@ -71,8 +76,8 @@ public class FavoriteService {
                 .movieId(request.movieId())
                 .build();
 
-        // MySQL에 즐겨찾기 정보 저장
-        favoriteRepository.save(favorite);
+        // MySQL에 즐겨찾기 정보 저장 후 응답 DTO 반환
+        return FavoriteResponse.from(favoriteRepository.save(favorite));
     }
 
     // ==================== 즐겨찾기 삭제 ====================
@@ -83,8 +88,9 @@ public class FavoriteService {
         // 로그인한 회원의 즐겨찾기 정보만 조회
         Favorite favorite = favoriteRepository
                 .findByMember_MemberIdAndMovieId(memberId, movieId)
-                .orElseThrow(() -> new ResponseStatusException(
+                .orElseThrow(() -> new ApiException(
                         HttpStatus.NOT_FOUND,
+                        "FAVORITE404_1",
                         "즐겨찾기에 등록되지 않은 영화입니다."
                 ));
 

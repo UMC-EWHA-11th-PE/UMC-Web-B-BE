@@ -1,7 +1,7 @@
 package com.umc.movie.entity;
 
-import java.time.LocalDateTime;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
         }
 )
 @Getter
-@NoArgsConstructor
-public class Favorite {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Favorite extends BaseTimeEntity {
 
     @Id // 기본키(PK)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,16 +30,6 @@ public class Favorite {
     // TMDB에서 제공하는 영화 ID
     @Column(name = "movie_id", nullable = false)
     private Long movieId;
-
-    //즐겨찾기 생성 시간(MySQL에서 자동 관리)
-    @Column(name = "created_at", nullable = false,
-            insertable = false, updatable = false)
-    private LocalDateTime createdAt;
-
-    //즐겨찾기 수정 시간(MySQL에서 관리)
-    @Column(name = "updated_at", nullable = false,
-            insertable = false, updatable = false)
-    private LocalDateTime updatedAt;
 
     // 새로운 즐겨찾기 객체를 생성하기 위한 Builder 생성자
     @Builder
