@@ -1,5 +1,6 @@
 package com.umc.movie.service;
 
+import com.umc.movie.exception.ApiException;
 import com.umc.movie.dto.CreateRatingRequest;
 import com.umc.movie.dto.RatingResponse;
 import com.umc.movie.dto.UpdateRatingRequest;
@@ -60,7 +61,9 @@ public class RatingService {
         // 2. 동일한 영화에 이미 평점을 등록했는지 확인 (중복이면 409)
         if (ratingRepository.existsByMember_MemberIdAndMovieId(
                 memberId, request.movieId())) {
-            throw new IllegalArgumentException(
+            throw new ApiException(
+                    HttpStatus.CONFLICT,
+                    "RATING409_1",
                     "이미 이 영화에 평점을 남기셨습니다."
             );
         }
@@ -120,8 +123,9 @@ public class RatingService {
 
         // 2. 평점 작성자와 요청한 회원이 다르면 403 반환
         if (!rating.getMember().getMemberId().equals(memberId)) {
-            throw new ResponseStatusException(
+            throw new ApiException(
                     HttpStatus.FORBIDDEN,
+                    "RATING403_1",
                     "본인이 작성한 평점만 수정하거나 삭제할 수 있습니다."
             );
         }

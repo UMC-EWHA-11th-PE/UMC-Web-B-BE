@@ -34,7 +34,12 @@ public class WebConfig implements WebMvcConfigurer {
                         "/members/nickname/**",  // 닉네임 중복 확인
                         "/members/email/**",     // 이메일 중복 확인
                         "/members/*/ratings",    // 회원별 평점 조회
-                        "/error"                 // 오류 처리 경로
+                        "/error",                // 오류 처리 경로
+
+                        // 9주차: Swagger 인증 예외 경로 추가
+                        "/swagger-ui.html",      // Swagger 접속 주소
+                        "/swagger-ui/**",        // Swagger UI 화면
+                        "/v3/api-docs/**"        // OpenAPI JSON 문서
                 );
     }
 }
