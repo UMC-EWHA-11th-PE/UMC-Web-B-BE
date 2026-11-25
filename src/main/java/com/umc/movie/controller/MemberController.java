@@ -1,3 +1,4 @@
+
 package com.umc.movie.controller;
 
 import com.umc.movie.dto.ApiResponse;
@@ -10,9 +11,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+// 9주차: Swagger 문서화
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController // HTTP 요청을 받고 JSON으로 응답하는 컨트롤러
 @RequiredArgsConstructor // MemberService를 주입받는 생성자 자동 생성
 @RequestMapping("/members") // 이 컨트롤러의 공통 URL
+@Tag(name = "회원", description = "회원가입과 회원 정보 API")
 public class MemberController {
 
     private final MemberService memberService;
@@ -33,6 +39,10 @@ public class MemberController {
 
     // POST /members
     // 회원가입 API
+    @Operation(
+            summary = "회원가입",
+            description = "이메일, 비밀번호, 닉네임으로 회원을 등록합니다. 토큰이 없어도 호출할 수 있는 공개 API입니다."
+    )
     @PostMapping
     public ResponseEntity<ApiResponse<MemberResponse>> signUp(
             @Valid @RequestBody SignUpRequest request
